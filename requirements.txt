@@ -1,0 +1,13 @@
+azure-identity>=1.16.0
+azure-mgmt-datafactory>=6.0.0
+azure-mgmt-costmanagement>=4.0.0
+azure-mgmt-resource>=23.0.0
+anthropic>=0.30.0
+openpyxl>=3.1.2
+pandas>=2.1.0
+pyyaml>=6.0.1
+python-dotenv>=1.0.0
+colorama>=0.4.6
+requests>=2.31.0
+flask>=3.0.0
+flask-cors>=4.0.0

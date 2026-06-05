@@ -1,0 +1,449 @@
+/* ============================================================================
+   Dashboard Styles for ADF Cost Optimizer
+   ============================================================================ */
+
+:root {
+    --primary-color: #006e74;
+    --success-color: #198754;
+    --warning-color: #ffc107;
+    --danger-color: #dc3545;
+    --info-color: #0097ac;
+    --dark-color: #231f20;
+    --light-color: #f8f9fa;
+    --border-color: #b7dde2;
+    --shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--light-color);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: #212529;
+}
+
+/* Navbar */
+.navbar {
+    box-shadow: var(--shadow);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.navbar-brand i {
+    margin-right: 0.5rem;
+    color: #0097ac;
+}
+
+/* Cards */
+.card {
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.card-header {
+    border-bottom: 1px solid var(--border-color);
+    padding: 1rem;
+    font-weight: 600;
+}
+
+.card-header.bg-light {
+    background-color: #f8f9fa !important;
+    border-bottom-color: var(--border-color);
+}
+
+.card-title {
+    margin-bottom: 0;
+    font-weight: 600;
+    color: #212529;
+}
+
+.card-title i {
+    margin-right: 0.5rem;
+    color: var(--primary-color);
+}
+
+/* Buttons */
+.btn {
+    border-radius: 0.375rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border: none;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+}
+
+.btn-group-vertical .btn {
+    border-radius: 0.375rem;
+    margin-bottom: 0.5rem;
+    text-align: left;
+    justify-content: flex-start;
+    border: 1px solid var(--border-color);
+}
+
+.btn-group-vertical .btn.active {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 110, 116, 0.25);
+}
+
+.btn-lg {
+    padding: 0.75rem 1.5rem;
+    font-size: 1.1rem;
+}
+
+.btn-success {
+    background-color: var(--success-color);
+}
+
+.btn-success:hover {
+    background-color: #157347;
+}
+
+/* Environment Color Dots */
+.env-dot {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+}
+
+/* Progress Bar */
+.progress {
+    background-color: #e9ecef;
+    border-radius: 0.375rem;
+    overflow: hidden;
+}
+
+.progress-bar {
+    background: linear-gradient(90deg, var(--primary-color), #0097ac);
+    transition: width 0.6s ease;
+}
+
+.progress-bar-striped {
+    background-image: linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.15) 25%,
+        transparent 25%,
+        transparent 50%,
+        rgba(255, 255, 255, 0.15) 50%,
+        rgba(255, 255, 255, 0.15) 75%,
+        transparent 75%,
+        transparent
+    );
+    background-size: 1rem 1rem;
+}
+
+.progress-bar-animated {
+    animation: progress-bar-stripes 1s linear infinite;
+}
+
+@keyframes progress-bar-stripes {
+    0% {
+        background-position: 0;
+    }
+    100% {
+        background-position: 1rem 0;
+    }
+}
+
+#progressText {
+    color: white;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+/* Status Cards */
+.status-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.status-card.success {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.status-card.error {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.status-card.running {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-right: 0.5rem;
+}
+
+.status-badge.idle {
+    background-color: #e2e3e5;
+    color: #495057;
+}
+
+.status-badge.running {
+    background-color: #cfe2ff;
+    color: #084298;
+}
+
+.status-badge.completed {
+    background-color: #d1e7dd;
+    color: #0f5132;
+}
+
+.status-badge.error {
+    background-color: #f8d7da;
+    color: #842029;
+}
+
+/* Result Metrics */
+#resultFactories, #resultPipelines, #resultCost {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+/* Lists */
+#subscriptionsList, #rgList {
+    background-color: var(--light-color);
+    border-color: var(--border-color) !important;
+}
+
+.analysis-scope-box {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(72px, 1fr));
+    gap: 0.5rem 0.75rem;
+    min-height: 42px;
+    padding: 0.55rem 0.75rem;
+    background-color: white;
+    border: 1px solid var(--border-color);
+    border-radius: 0.375rem;
+}
+
+.analysis-scope-box .form-check {
+    margin: 0;
+    min-width: 0;
+}
+
+.analysis-scope-box .form-check-label {
+    display: inline-flex;
+    align-items: center;
+    min-width: 0;
+    white-space: nowrap;
+}
+
+@media (max-width: 767.98px) {
+    .analysis-scope-box {
+        grid-template-columns: repeat(2, minmax(72px, 1fr));
+    }
+}
+
+.list-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 0.75rem;
+    background-color: white;
+    border: 1px solid var(--border-color);
+    border-radius: 0.375rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+}
+
+.list-item i {
+    color: #6c757d;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.list-item i:hover {
+    color: var(--danger-color);
+}
+
+/* Badge */
+.badge {
+    padding: 0.35rem 0.65rem;
+    font-weight: 500;
+}
+
+/* Modals */
+.modal-content {
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+    border-bottom: 1px solid var(--border-color);
+    padding: 1.5rem;
+    background-color: var(--light-color);
+}
+
+.modal-title {
+    font-weight: 600;
+    color: #212529;
+}
+
+.modal-footer {
+    border-top: 1px solid var(--border-color);
+    padding: 1rem;
+    background-color: var(--light-color);
+}
+
+/* Forms */
+.form-label {
+    color: #212529;
+    font-weight: 500;
+}
+
+.form-control, .form-select {
+    border: 1px solid var(--border-color);
+    border-radius: 0.375rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+/* Alerts */
+.alert {
+    border: none;
+    border-radius: 0.5rem;
+    border-left: 4px solid;
+}
+
+.alert-danger {
+    border-left-color: var(--danger-color);
+    background-color: #ffeaea;
+}
+
+.alert-success {
+    border-left-color: var(--success-color);
+    background-color: #eafde8;
+}
+
+.alert-warning {
+    border-left-color: var(--warning-color);
+    background-color: #fffae6;
+}
+
+.alert-info {
+    border-left-color: var(--info-color);
+    background-color: #e1f7ff;
+}
+
+/* Loading Spinner */
+.spinner-border {
+    width: 1rem;
+    height: 1rem;
+    border-width: 0.2rem;
+}
+
+/* Responsive */
+@media (max-width: 991.98px) {
+    .container-fluid {
+        padding: 1rem;
+    }
+
+    .card {
+        margin-bottom: 1rem;
+    }
+
+    .btn-lg {
+        padding: 0.6rem 1rem;
+        font-size: 1rem;
+    }
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Utility Classes */
+.text-muted {
+    color: #6c757d;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.mb-0 {
+    margin-bottom: 0;
+}
+
+.gap-2 {
+    gap: 0.5rem;
+}
+
+/* Configuration Section */
+#envConfigPanel {
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* ADF List */
+.adf-item {
+    background: white;
+    border: 1px solid var(--border-color);
+    border-radius: 0.375rem;
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+    transition: all 0.2s ease;
+}
+
+.adf-item:hover {
+    box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.1);
+    border-color: var(--primary-color);
+}
+
+.adf-name {
+    font-weight: 600;
+    color: #212529;
+    margin-bottom: 0.25rem;
+}
+
+.adf-detail {
+    font-size: 0.85rem;
+    color: #6c757d;
+    margin-bottom: 0.25rem;
+}
+
+.adf-detail strong {
+    color: #212529;
+}

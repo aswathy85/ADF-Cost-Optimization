@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADF Cost Optimizer - Pipeline Insights</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="/static/dashboard.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark sticky-top">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1">
+                <i class="bi bi-graph-up-arrow"></i> ADF Cost Optimizer
+            </span>
+            <div>
+                <a class="btn btn-sm btn-outline-light me-2" href="/">Dashboard</a>
+                <span class="text-muted" id="version">v2.0.0</span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid py-4">
+        <div class="row">
+            <div class="col-12 mb-4">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="card-title mb-0">
+                            <i class="bi bi-kanban-fill"></i> Pipeline Insights
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="mb-3 text-muted">
+                            Browse all analyzed pipelines, filter by environment and ADF factory, and request AI suggestions or generated optimized code.
+                        </p>
+                        <div class="row g-3 align-items-end">
+                            <div class="col-sm-6 col-lg-4">
+                                <label class="form-label fw-bold" for="insightsEnvironmentFilter">Environment</label>
+                                <select class="form-select" id="insightsEnvironmentFilter">
+                                    <option value="">All Environments</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-6 col-lg-4">
+                                <label class="form-label fw-bold" for="insightsFactoryFilter">ADF Factory</label>
+                                <select class="form-select" id="insightsFactoryFilter">
+                                    <option value="">All ADF</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-12 col-lg-4">
+                                <button class="btn btn-success w-100" id="refreshPipelineInsightsBtn">
+                                    <i class="bi bi-arrow-repeat"></i> Refresh Pipelines
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div id="insightsAlert" class="alert alert-warning d-none" role="alert">
+                    No pipeline analysis payload is available. Run the dashboard analysis first and return to this page.
+                </div>
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover table-bordered align-middle" id="pipelineInsightsTable">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Environment</th>
+                                        <th>ADF Factory</th>
+                                        <th>Pipeline</th>
+                                        <th>Runs</th>
+                                        <th>Estimated Cost</th>
+                                        <th>Actual Cost</th>
+                                        <th>Avg Cost / Run</th>
+                                        <th>Cost Tier</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="pipelineInsightsBody">
+                                    <tr>
+                                        <td colspan="10" class="text-center text-muted">Loading pipeline details...</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="pipelineSuggestionsModal" tabindex="-1">
+        <div class="modal-dialog modal-xl modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">AI Optimization Suggestions</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="pipelineSuggestionsContent">
+                        <p class="text-muted">Loading suggestions...</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="pipelineGenerateModal" tabindex="-1">
+        <div class="modal-dialog modal-xl modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Generated Pipeline Optimization Code</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <pre id="pipelineGenerateContent" class="bg-light p-3 rounded" style="white-space: pre-wrap; word-break: break-word;"></pre>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/dashboard.js"></script>
+</body>
+</html>

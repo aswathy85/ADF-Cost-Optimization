@@ -1,0 +1,43 @@
+# ============================================================
+# ADF Cost Optimizer - Configuration
+# ============================================================
+
+azure:
+  subscription_ids:
+    - "your-subscription-id-1"
+  tenant_id: "your-tenant-id"
+  resource_groups: []
+
+analysis:
+  date_range_days: 30
+  environments:
+    dev:
+      patterns: ["dev", "development", "dvlp", "develop"]
+      color: "006E74"
+    qa:
+      patterns: ["qa", "quality", "test", "tst"]
+      color: "0097AC"
+    uat:
+      patterns: ["uat", "staging", "stg", "preprod"]
+      color: "A9D18E"
+    prod:
+      patterns: ["prod", "production", "prd", "live"]
+      color: "231F20"
+  top_pipelines_for_ai: 15
+
+cost_thresholds:
+  high: 200.0
+  medium: 50.0
+  low: 10.0
+
+genai:
+  model: "claude-sonnet-4-20250514"
+  max_tokens: 4096
+
+output:
+  excel_path: "./reports/ADF_Cost_Optimization_Report.xlsx"
+  powerbi_csv_path: "./reports/PowerBI_DataModel.csv"
+
+# Set true to test without Azure credentials
+use_mock_data: false
+mock_data_seed: 42
